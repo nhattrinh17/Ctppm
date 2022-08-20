@@ -1,0 +1,37 @@
+Cat cat1 = newCat();
+cat1.greeting();
+\\Ở dòng này sẽ in ra meow! do ở dong 1 đã khởi tạo đối tượng Cat nên có thể gọi đến thuộc tính greetinh
+Dog dog1 = new Dog();
+dog1.greeting();
+BigDog bigDog1 = new BigDog();
+bigDog1.greeting();
+\\Tương tự đến đây sẽ in ra Woof! và Woow!
+
+Animal animal = new Cat();
+animal1.greeting();
+\\Do tuy khởi tạo đối tượng Animal nhưng lại gán cho dối tượng Cat nên thực tế sẽ mang đối tượng Cat nên ở đây vẫn in ra Meow!
+Animal animal2 = new Dog();
+animal2.greeting();
+Animal animal3 = new BigDog();
+animal3.greeting();
+\\Tương tự ở đây vẫn in ra Woof! và Woow!
+
+Dog dog2 = (Dog) animal2;
+\\Ở đây sẽ ép kiểu cho animal2 về kiểu thực của nó là Dog và gán cho bigDog1
+BigDog bigDog2 = (BigDog) animal3;
+\\ Ở đây tương tự ép cho animal3 về kiểu thực của nó là BigDog và gán cho bigDog2
+Dog dog3 = (Dog) animal3;
+\\Ở đây sẽ không ép được kiểu về Do do kiểu thực của animal3 là BogDog
+Cat cat2 = (Cat) animal2;
+\\Tại đây sẽ báo lỗi do kiểu thực của animal2 là Dog nhưng lại ép kiểu thành Cat
+dog2.greeting(dog3);
+\\Ở đây sẽ in ra Wooooooooof!
+dog3.greeting(dog2);
+\\Ở đây sẽ in ra Wooooooooow!
+dog2.greeting(bigDog2);
+\\Ở đây do bigDog extends lại Dog nên sẽ in ra Wooooooooof!
+bigDog2.greeting(dog2);
+\\Ở đây sẽ gọi đến greeting(Dog another) và in ra Woooooowwww!
+bigDog2.greeting(BigDog1);
+\\Ở đây sẽ gọi đến greeting(Dog another) do BogDog thừa kế lại Dog nên vẫn hợp lệ và in ra Woooooowwww!
+
